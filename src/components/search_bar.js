@@ -2,9 +2,8 @@ import React, { Component } from "react";
 
 //This is a class based component
 class SearchBar extends Component {
-
-    // this is how we define state in a class-based component.
-    //functional based components do not have states.
+  // this is how we define state in a class-based component.
+  //functional based components do not have states.
   constructor(props) {
     super(props);
 
@@ -13,17 +12,25 @@ class SearchBar extends Component {
 
   render() {
     return (
-        // <input onChange={this.onInputChange} />
-      <input
-        value={this.state.term}
-        onChange={event => this.setState({ term: event.target.value })}
-      />
+      // <input onChange={this.onInputChange} />
+      <div className="search-bar">
+        <input
+          value={this.state.term}
+          onChange={event => this.onInputChange(event.target.value)}
+        />
+      </div>
     );
   }
 
-//   onInputChange(event) {
-//       console.log(event.target.value);
-//   }
+  onInputChange(term) { 
+    this.setState({ term });
+    this.props.onSearchTermChange(term);
+
+  }
+
+  //   onInputChange(event) {
+  //       console.log(event.target.value);
+  //   }
 }
 
 //This is a functional component
